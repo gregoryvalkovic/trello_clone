@@ -1,0 +1,9 @@
+.card, Button {
+    width: 20em;
+    margin: 2em;
+    float: left;
+}
+
+ol {
+    list-style-type: none;
+}
