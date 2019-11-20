@@ -1,12 +1,12 @@
 import React from 'react';
 import './App.css';
 import {AddList} from './AddList';
-import {ListContainer} from './ListContainer';
+import {ListController} from './ListController';
 
 function App() {
   return (
     <div className="App">
-      <ListContainer/>
+      <ListController/>
     </div>
   );
 }

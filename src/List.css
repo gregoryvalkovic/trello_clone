@@ -7,3 +7,7 @@
 ol {
     list-style-type: none;
 }
+
+.close-button {
+    float: right;
+}
