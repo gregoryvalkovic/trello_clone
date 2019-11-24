@@ -3,29 +3,21 @@ import {Button, ButtonToolbar} from 'react-bootstrap';
 import './List.css';
 import {faTimesCircle} from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
+import {CardController} from '../card/CardController';
 
 export class List extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            index: 0,
-            id: this.props.id}
-        this.getId = this.getId.bind(this);
         this.delete = this.delete.bind(this);
     }
     
-    getId() {
-        return this.state.id;
-    }
-
     delete() {
-        this.props.onDelete(this.state.id);
+        this.props.onDelete(this.props.id);
     }
 
     render() {
         return (
-            <div className="card" id={this.props.id}>
+            <div className="card list" id={this.props.id}>
                 <div className="card-header">
                     <div className="close-button">
                         <FontAwesomeIcon 
@@ -37,7 +29,7 @@ export class List extends React.Component {
                     </div>
                 </div>
                 <div className="card-body">
-                    <Button variant="outline-primary" size="sm">Add a card</Button>
+                    <CardController/>
                 </div>
             </div>  
         );

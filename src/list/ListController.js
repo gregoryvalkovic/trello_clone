@@ -1,6 +1,5 @@
 import React from 'react';
 import './List.css';
-import {AddList} from './AddList';
 import { ListDisplayer } from './ListDisplayer';
 import {List} from './List';
 
@@ -33,7 +32,7 @@ export class ListController extends React.Component {
         // Find the index of the list to be deleted
         for (let i=0; i < this.state.lists.length; i++) {
             let currList = this.state.lists[i];
-            if (currList.getId == listId) {
+            if (currList.props.id == listId) {
                 index = i;
                 break;
             }
@@ -46,13 +45,11 @@ export class ListController extends React.Component {
 
     render() {
         return (
-            <div>
                 <ListDisplayer 
                     lists={this.state.lists}
                     onDelete={this.deleteList}
+                    onAdd={this.addList}
                 />
-                <AddList onClick={this.addList} />
-            </div>
         );
     }
 }

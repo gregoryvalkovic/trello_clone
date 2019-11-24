@@ -1,7 +1,6 @@
 import React from 'react';
 import './App.css';
-import {AddList} from './AddList';
-import {ListController} from './ListController';
+import {ListController} from './list/ListController';
 
 function App() {
   return (
