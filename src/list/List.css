@@ -20,6 +20,6 @@ ol {
     padding-left: 0;
 }
 
-.close-button {
+div.close-button {
     float: right;
 }

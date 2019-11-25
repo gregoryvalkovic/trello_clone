@@ -29,7 +29,7 @@ export class List extends React.Component {
                     </div>
                 </div>
                 <div className="card-body">
-                    <CardController/>
+                    <CardController listId={this.props.id}/>
                 </div>
             </div>  
         );
