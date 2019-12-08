@@ -2,13 +2,11 @@ import React from 'react';
 import '../list/List.css';
 import {faTimesCircle} from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {EditableText} from '../EditableText';
 
 export class Card extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            text: "Card text"
-        };
         this.deleteCard = this.deleteCard.bind(this);
     }
 
@@ -24,11 +22,11 @@ export class Card extends React.Component {
                 <div className="card-header">
                     <div className="close-button">
                         <FontAwesomeIcon 
-                            icon={faTimesCircle}
-                            onClick={this.deleteCard}/>
+                        icon={faTimesCircle}
+                        onClick={this.deleteCard}/>
                     </div>
                     <div className="card-body kanban-card-text">
-                        {this.state.text}
+                        <EditableText text="Card text"/>
                     </div>
                 </div>
             </div>

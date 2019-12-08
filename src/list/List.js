@@ -1,5 +1,5 @@
 import React from 'react';
-import {Button, ButtonToolbar} from 'react-bootstrap';
+import {EditableText} from '../EditableText';
 import './List.css';
 import {faTimesCircle} from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -24,9 +24,7 @@ export class List extends React.Component {
                             icon={faTimesCircle}
                             onClick={this.delete}/>
                     </div>
-                    <div>
-                        List title
-                    </div>
+                    <EditableText text="List title"/>
                 </div>
                 <div className="card-body">
                     <CardController listId={this.props.id}/>

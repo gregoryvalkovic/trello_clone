@@ -37,10 +37,8 @@ export class ListController extends React.Component {
                 break;
             }
         }
-        console.log("Deleting list: " + listId);
         array.splice(index, 1);
         this.setState({lists: array});
-        console.log("lists is now: " + this.state.lists);
     }
 
     render() {
