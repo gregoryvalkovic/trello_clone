@@ -3,14 +3,12 @@ import React from 'react';
 export class EditableText extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            isEditing: false,
-            text: this.props.text
-        }
+        this.state = {isEditing: false}
         this.renderInput = this.renderInput.bind(this);
-        this.toggleEdit = this.toggleEdit.bind(this);
-        this.handleInputChange = this.handleInputChange.bind(this);
+        this.renderDisplay = this.renderDisplay.bind(this);
         this.handleKeyUp = this.handleKeyUp.bind(this);
+        this.handleChange = this.handleChange.bind(this);
+        this.toggleEdit = this.toggleEdit.bind(this);
     }
 
     renderInput() {
@@ -18,10 +16,10 @@ export class EditableText extends React.Component {
             <div onDoubleClick={this.toggleEdit}>
                 <input
                 type="text"
-                value={this.state.text}
-                onChange={this.handleInputChange}
+                value={this.props.text}
+                onChange={this.handleChange}
                 onKeyUp={this.handleKeyUp}
-                onBlur={this.toggleEdit}
+                onBlur={this.props.toggleEdit}
                 />
             </div>
         );
@@ -30,13 +28,14 @@ export class EditableText extends React.Component {
     renderDisplay() {
         return (
             <div onDoubleClick={this.toggleEdit}>
-                {this.state.text}
+                {this.props.text}
             </div>
         )
     }
 
-    handleInputChange(e) {
-        this.setState({text: e.target.value})
+    toggleEdit() {
+        var newState = this.state.isEditing ? false : true;
+        this.setState({isEditing : newState});
     }
 
     handleKeyUp(e) {
@@ -45,14 +44,11 @@ export class EditableText extends React.Component {
         }
     }
 
-    toggleEdit() {
-        var newState = this.state.isEditing ? false : true;
-        this.setState({isEditing : newState});
+    handleChange(e) {
+        this.props.onChange(e.target.value);
     }
 
     render() {
-        console.log("Rendering");
-        console.log("isEditing: " + this.state.isEditing);
         if (this.state.isEditing) {
             return this.renderInput();
         }
