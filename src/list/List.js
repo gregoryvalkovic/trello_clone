@@ -8,33 +8,31 @@ import {CardController} from '../card/CardController';
 export class List extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {text: "List Title"}
+        this.state = {
+            text: "List Title",
+            cards: []
+        };
         this.delete = this.delete.bind(this);
         this.setText = this.setText.bind(this);
+        this.setCards = this.setCards.bind(this);
     }
     
     delete() {
         this.props.onDelete(this.props.id);
     }
 
-    dragHandler(e) {
-        e.preventDefault();
-    }
-
-    dropHandler(e) {
-
-    }
-
     setText(txt) {
         this.setState({text: txt});
     }
 
+    setCards(cardsArray) {
+        this.setState({cards: cardsArray})
+    }
+
     render() {
         return (
-            <div className="card list droppable" 
+            <div className="card list"
             id={this.props.id}
-            onDragOver={this.dropHandler}
-            onDrop={this.dropHandler}
             >
                 <div className="card-header">
                     <div className="close-button">
@@ -48,7 +46,7 @@ export class List extends React.Component {
                     />
                 </div>
                 <div className="card-body">
-                    <CardController listId={this.props.id} />
+                    <CardController listId={this.props.id} setCards={this.setCards} cards={this.state.cards}/>
                 </div>
             </div>  
         );

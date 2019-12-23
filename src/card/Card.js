@@ -8,7 +8,7 @@ export class Card extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            text: "Card text"}
+            text: this.props.text || "Card text"}
         this.deleteCard = this.deleteCard.bind(this);
         this.dragStartHandler = this.dragStartHandler.bind(this);
         this.setText = this.setText.bind(this);
@@ -31,7 +31,10 @@ export class Card extends React.Component {
             <div 
                 className="card kanban-card"
                 id={this.props.id}
-                draggable>
+                draggable
+                onDragStart={this.dragStartHandler}
+                onDragEnd={(e) => this.deleteCard()}
+                >
                 <div className="card-header">
                     <div className="close-button">
                         <FontAwesomeIcon 

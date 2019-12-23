@@ -4,7 +4,9 @@ import {Button} from 'react-bootstrap';
 export class CardDisplayer extends React.Component {
     render() {
         return (
-            <div>
+            <div
+            onDrop={this.props.onDrop}
+            onDragOver={(e) => e.preventDefault()}>
                 <ol>
                     {this.props.cards.map((card) => (
                         <li key={card.props.id}>
