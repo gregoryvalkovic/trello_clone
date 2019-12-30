@@ -32,6 +32,7 @@ export class CardController extends React.Component {
         array.push(
             <Card 
                 id={this.props.listId + "_" + this.getNextId()}
+                listid={this.props.listId}
                 onDelete={this.deleteCard}
             />
         );
@@ -64,6 +65,7 @@ export class CardController extends React.Component {
                 onAdd={this.addCard}
                 cards={this.props.cards}
                 onDrop={this.dropHandler}
+                listId={this.props.listId}
             />
         );
     }

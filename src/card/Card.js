@@ -8,10 +8,14 @@ export class Card extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            text: this.props.text || "Card text"}
+            text: this.props.text || "Card text",
+            hoverListId: null
+        }
         this.deleteCard = this.deleteCard.bind(this);
         this.dragStartHandler = this.dragStartHandler.bind(this);
+        this.dragEndHandler = this.dragEndHandler.bind(this);
         this.setText = this.setText.bind(this);
+        this.setHoverListId = this.setHoverListId.bind(this);
     }
 
     deleteCard() {
@@ -20,10 +24,19 @@ export class Card extends React.Component {
 
     dragStartHandler(e) {
         e.dataTransfer.setData('text', this.state.text);
+        e.dataTransfer.setData('setHoverListId', this.setHoverListId)
+    }
+
+    dragEndHandler(e) {
+        this.deleteCard();
     }
 
     setText(txt) {
         this.setState({text: txt});
+    }
+
+    setHoverListId(listId) {
+        this.setState({hoverListId: listId})
     }
 
     render() {
@@ -33,7 +46,7 @@ export class Card extends React.Component {
                 id={this.props.id}
                 draggable
                 onDragStart={this.dragStartHandler}
-                onDragEnd={(e) => this.deleteCard()}
+                onDragEnd={this.dragEndHandler}
                 >
                 <div className="card-header">
                     <div className="close-button">
